@@ -30,7 +30,7 @@ function getRandomString(length) {
   for ( var i = 0; i < length; i++ ) {
       result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
   }
-  return result;
+  return result; //return random
 }
 
 const App = () => {
