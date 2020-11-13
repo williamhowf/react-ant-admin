@@ -42,7 +42,7 @@ const App = () => {
     setCount(count => count + 1);
     myAlert(count);
   }
-
+  // local function
   const addString = () => {
     setString(string => string + getRandomString(1));
     console.log('string value=>',string);
@@ -50,7 +50,7 @@ const App = () => {
   }
 
   const printRandom = () => {
-    console.log('random string=>',getRandomString(18));
+    console.log('random string=>',getRandomString(20));
   }
 
   const printLog = () => {
