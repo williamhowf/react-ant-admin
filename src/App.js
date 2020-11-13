@@ -50,6 +50,7 @@ const App = () => (
           <Option value="lucy">lucy</Option>
           <Option value="disabled" disabled>disabled</Option>
           <Option value="yiminghe">yiminghe</Option>
+          <Option value="william">william</Option>
         </Select>
       </Form.Item>
       <Form.Item label="日期选择框">
