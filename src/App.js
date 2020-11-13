@@ -53,6 +53,7 @@ const App = () => {
     console.log('random string=>',getRandomString(20));
   }
 
+  // test
   const printLog = () => {
     console.log('on-load effect triggered.');
   }
