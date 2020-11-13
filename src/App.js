@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   Form,
   Select,
@@ -10,14 +10,70 @@ import {
   Rate,
   Typography,
   Space,
-  Divider,
+  Divider
 } from 'antd';
 import './App.less';
 
 const { Option } = Select;
 const { Title } = Typography;
 
-const App = () => (
+// public function when import App.js
+function myAlert(num) {
+   console.log('hello world clicked=>',num);
+};
+
+// public function when import App.js
+function getRandomString(length) {
+  var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*';
+  var result = '';
+  for ( var i = 0; i < length; i++ ) {
+      result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+  }
+  return result;
+}
+
+const App = () => {
+  //initliaze variable [getValue, setValue] => const varObj { getter; setter; }
+  const [string,setString] = useState(''); // initialize count as string with empty string
+  const [count,setCount] = useState(0); // initialize count as integer with zero
+  
+  // local function
+  const increaseCount = () => {
+    setCount(count => count + 1);
+    myAlert(count);
+  }
+
+  const addString = () => {
+    setString(string => string + getRandomString(1));
+    console.log('string value=>',string);
+    console.log('string length', string.length);
+  }
+
+  const printRandom = () => {
+    console.log('random string=>',getRandomString(18));
+  }
+
+  const printLog = () => {
+    console.log('on-load effect triggered.');
+  }
+
+  //on-load will trigger this
+  useEffect(() => {
+    printLog();
+    setCount(count => count+1);
+  }, []);
+
+  // if the function component doesn't have any other functions, 'return' keyword can remove and return sample code as below. 
+  /* sample code:
+    const App = () => (
+      <>
+        <section>...
+        <form>...
+        <div>...
+      </>
+    );
+  */
+  return ( 
   <>
     <section style={{ textAlign: 'center', marginTop: 48, marginBottom: 40 }}>
       <Space align="start">
@@ -70,10 +126,15 @@ const App = () => (
           <Button>
             Cancel
           </Button>
+          <Button type="ghost">ghost</Button>
+          <Button type="dashed" onClick={addString}>dashed</Button>
+          <Button type="link" onClick={printRandom}>link</Button>
+          <Button type="text" onClick={increaseCount}>text</Button>
         </Space>
       </Form.Item>
     </Form>
   </>
-);
+  )
+};
 
 export default App;
